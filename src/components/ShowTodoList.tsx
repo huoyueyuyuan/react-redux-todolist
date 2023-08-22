@@ -13,9 +13,9 @@ const ShowTodoList: React.FC<ShowTodoListProps> = ({ todos, onDeleteTodo }) => {
       <h2>Todo List</h2>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>
+          <li key={index} className='d-flex justify-content-between'>
             {todo.name} - Completed: {todo.completed ? 'Yes' : 'No'}
-            <button onClick={() => onDeleteTodo(index)}>Delete</button>
+            <button onClick={() => onDeleteTodo(index)} className='d-flex '>Delete</button>
           </li>
         ))}
       </ul>
