@@ -3,8 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { deleteTodo, toggleTodo } from '../todoSlice'; // 导入 todoSlice
-import { Todo } from '../types';
+import { deleteTodo, toggleTodo } from '../TodoSlice'; // 导入 todoSlice
 
 const ShowTodoList = () => {
   const todos = useSelector(state => state.todos);

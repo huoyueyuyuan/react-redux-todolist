@@ -1,6 +1,7 @@
 // App.tsx
 import React, { useState } from 'react';
-import { Todo } from './types'; // 假设你之前定义了 Todo 类型
+import { Todo } from './types';
+
 import AddTodoForm from './components/AddTodo';
 import ShowTodoList from './components/ShowTodoList';
 
@@ -30,8 +31,8 @@ function App() {
   };
 
   return (
-    <div>
-      <h1 className='text-success'>Todo App</h1>
+    <div className="container mt-4">
+      <h1 className="mb-4">Todo App</h1>
       <AddTodoForm onAddTodo={handleAddTodo} />
       <ShowTodoList todos={todos} onDeleteTodo={handleDeleteTodo} onToggleTodo={handleToggleTodo} />
     </div>
