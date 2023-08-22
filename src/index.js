@@ -1,8 +1,7 @@
-// index.js (or index.tsx for TypeScript)
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './store'; // 导入创建的 Redux Store
+import store from './sotre/store'; 
 import App from './App';
 
 

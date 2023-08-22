@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { addTodo } from '../TodoSlice'; 
+import React, { FC, useState } from 'react';
+import { addTodo } from '../redux/TodoSlice'; 
 import { useDispatch } from 'react-redux';
 
-const addTodoComponeent: React.FC = () => {
+export const AddTodoComponeent: FC = () => {
   
   const dispatch = useDispatch();
   const [name, setName] = useState<string>('');
