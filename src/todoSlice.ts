@@ -1,10 +1,10 @@
 // todoSlice.js (or todoSlice.ts for TypeScript)
 import { createSlice } from '@reduxjs/toolkit';
+import { access } from 'fs';
 
 const initialState = [
-  { id: 1, name: 'Buy groceries', completed: false },
-  { id: 2, name: 'Finish assignment', completed: true },
-  // ... 添加更多待办事项
+  { name: 'Buy groceries', completed: false },
+  { name: 'Finish assignment', completed: true },
 ];
 
 const todoSlice = createSlice({
@@ -13,20 +13,18 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       const newTodo = {
-        id: state.length + 1,
-        name: action.payload.name,
+        name: action.payload,
         completed: false,
       };
       state.push(newTodo);
     },
     deleteTodo: (state, action) => {
-      const index = state.findIndex(todo => todo.id === action.payload);
-      if (index !== -1) {
-        state.splice(index, 1);
+      if (action.payload !== -1) {
+        state.splice(action.payload, 1);
       }
     },
     toggleTodo: (state, action) => {
-      const index = state.findIndex(todo => todo.id === action.payload);
+      const index = action.payload
       if (index !== -1) {
         state[index].completed = !state[index].completed;
       }

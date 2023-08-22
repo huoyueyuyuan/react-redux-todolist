@@ -21,15 +21,15 @@ const ShowTodoList = () => {
     <div>
       <h2>Todo List</h2>
       <ul>
-        {todos.map((todo) => (
+        {todos.map(({name,completed},item) => (
           <li
-            key={todo.id}
-            className={todo.completed ? 'text-success' : 'text-muted'}
-            onClick={() => handleToggleTodo(todo.id)}
+            key={item}
+            className={completed ? 'text-success' : 'text-muted'}
+            onClick={() => handleToggleTodo(item)}
           >
             <FontAwesomeIcon icon={faCheck} className="mr-2" />
-            {todo.name}
-            <button className="btn btn-link" onClick={() => handleDeleteTodo(todo.id)}>
+            {`${name} : ${item} : ${completed}`}
+            <button className="btn btn-link" onClick={() => handleDeleteTodo(item)}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
           </li>

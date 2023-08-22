@@ -1,34 +1,36 @@
 // AddTodoForm.tsx
 import React, { useState } from 'react';
-import { Todo } from '../types';
+import { addTodo } from '../TodoSlice'; // 导入 todoSlice
+import { useDispatch } from 'react-redux';
 
-interface AddTodoFormProps {
-  onAddTodo: (todo: Todo) => void;
-}
 
-const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAddTodo }) => {
-  const [newTodo, setNewTodo] = useState<Todo>({ name: '', completed: false });
+
+const AddTodoForm: React.FC = () => {
+  
+  const dispatch = useDispatch();
+  const [name, setName] = useState<string>('');
+
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setNewTodo(prevTodo => ({ ...prevTodo, [name]: value }));
+    const { value } = event.target;
+    setName(value);
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleAddTodo = (event: React.FormEvent) => {
     event.preventDefault();
-    if (newTodo.name.trim()) {
-      onAddTodo(newTodo);
-      setNewTodo({ name: '', completed: false });
+    if (name.trim()) {
+      dispatch(addTodo(name));
+      setName("")
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleAddTodo}>
       <input
         type="text"
         name="name"
         placeholder="Add a new todo" // 添加提示语
-        value={newTodo.name}
+        value={name}
         onChange={handleInputChange}
       />
       <button type="submit">Add Todo</button>
@@ -37,3 +39,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAddTodo }) => {
 };
 
 export default AddTodoForm;
+function dispatch(arg0: { payload: any; type: "todos/addTodo"; }) {
+  throw new Error('Function not implemented.');
+}
+
