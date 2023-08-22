@@ -1,11 +1,8 @@
-// AddTodoForm.tsx
 import React, { useState } from 'react';
-import { addTodo } from '../TodoSlice'; // 导入 todoSlice
+import { addTodo } from '../TodoSlice'; 
 import { useDispatch } from 'react-redux';
 
-
-
-const AddTodoForm: React.FC = () => {
+const addTodoComponeent: React.FC = () => {
   
   const dispatch = useDispatch();
   const [name, setName] = useState<string>('');
@@ -29,7 +26,7 @@ const AddTodoForm: React.FC = () => {
       <input
         type="text"
         name="name"
-        placeholder="Add a new todo" // 添加提示语
+        placeholder="Add a new todo..." 
         value={name}
         onChange={handleInputChange}
       />
@@ -38,8 +35,5 @@ const AddTodoForm: React.FC = () => {
   );
 };
 
-export default AddTodoForm;
-function dispatch(arg0: { payload: any; type: "todos/addTodo"; }) {
-  throw new Error('Function not implemented.');
-}
+export default addTodoComponeent;
 

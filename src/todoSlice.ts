@@ -1,6 +1,4 @@
-// todoSlice.js (or todoSlice.ts for TypeScript)
 import { createSlice } from '@reduxjs/toolkit';
-import { access } from 'fs';
 
 const initialState = [
   { name: 'Buy groceries', completed: false },

@@ -33,8 +33,8 @@ function App() {
   return (
     <div className="container mt-4">
       <h1 className="mb-4">Todo App</h1>
-      <AddTodoForm onAddTodo={handleAddTodo} />
       <ShowTodoList todos={todos} onDeleteTodo={handleDeleteTodo} onToggleTodo={handleToggleTodo} />
+      <AddTodoForm onAddTodo={handleAddTodo} />
     </div>
   );
 }
