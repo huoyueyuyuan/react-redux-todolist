@@ -8,6 +8,12 @@
     ],
     "plugins": ["react", "react-hooks", "import", "jsx-a11y", "prettier"],
     "rules": {
+      "no-use-before-define": ["error", { "functions": false }],
+      "camelcase": "error",
+      "no-unused-vars": "warn",
+      "no-undef": "error",
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error"
     },
     "settings": {
       "react": {
@@ -15,4 +21,7 @@
       }
     }
   }
+  
+
+  
   

@@ -1,5 +1,5 @@
 // types.ts
-export interface Todo {
+export interface TodoJob {
     name: string;
     completed: boolean;
   }
