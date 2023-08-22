@@ -22,11 +22,18 @@ function App() {
     setTodos(prevTodos => [...prevTodos, newTodo]);
   };
 
+  const handleToggleTodo = (index: number) => {
+    const newTodos = todos.map((todo, i) =>
+      i === index ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(newTodos);
+  };
+
   return (
     <div>
       <h1 className='text-success'>Todo App</h1>
       <AddTodoForm onAddTodo={handleAddTodo} />
-      <ShowTodoList todos={todos} onDeleteTodo={handleDeleteTodo} />
+      <ShowTodoList todos={todos} onDeleteTodo={handleDeleteTodo} onToggleTodo={handleToggleTodo} />
     </div>
   );
 }

@@ -27,11 +27,11 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAddTodo }) => {
       <input
         type="text"
         name="name"
-        placeholder="Enter todo name"
+        placeholder="Add a new todo..." 
         value={newTodo.name}
         onChange={handleInputChange}
       />
-      <button type="submit">Add Todo</button>
+      <button type="submit">Add</button>
     </form>
   );
 };
