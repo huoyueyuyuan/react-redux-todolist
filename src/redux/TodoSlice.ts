@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { TodoJob } from '../api/TodoJob';
 
 const initialState = [
   { name: 'Buy groceries', completed: false },
   { name: 'Finish assignment', completed: true },
 ];
+
 
 const todoSlice = createSlice({
   name: 'todos',
@@ -15,6 +17,7 @@ const todoSlice = createSlice({
         completed: false,
       };
       state.push(newTodo);
+    
     },
     deleteTodo: (state, action) => {
       if (action.payload !== -1) {
@@ -27,8 +30,19 @@ const todoSlice = createSlice({
         state[index].completed = !state[index].completed;
       }
     },
+    sortTodosByCompleted: (state) => {
+      state.sort((a, b) => (a.completed === b.completed ? 0 : a.completed ? 1 : -1));
+    }
+    
   },
 });
 
-export const { addTodo, deleteTodo, toggleTodo } = todoSlice.actions;
+export const { addTodo, deleteTodo, toggleTodo,sortTodosByCompleted } = todoSlice.actions;
 export default todoSlice.reducer;
+
+
+function sortState(state:TodoJob[]) {
+  const sortedTodos = [...state].sort((a, b) => (a.completed === b.completed ? 0 : a.completed ? 1 : -1));
+  state = [...sortedTodos];
+}
+

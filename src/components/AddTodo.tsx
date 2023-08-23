@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { addTodo } from '../redux/TodoSlice'; 
+import { addTodo, sortTodosByCompleted } from '../redux/TodoSlice'; 
 import { useDispatch } from 'react-redux';
+import '../index.css'; // 导入 index.css 文件
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 export const AddTodoComponeent = () => {
@@ -12,28 +15,33 @@ export const AddTodoComponeent = () => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setName(value);
+    console.log(name);
   };
 
   const handleAddTodo = (event: React.FormEvent) => {
     event.preventDefault();
     if (name.trim()) {
       dispatch(addTodo(name));
-      setName("")
+      dispatch(sortTodosByCompleted());
+      setName("");
     }
   };
 
   return (
-    <form onSubmit={handleAddTodo}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Add a new todo..." 
-        value={name}
-        onChange={handleInputChange}
-      />
-      <button type="submit">Add Todo</button>
-    </form>
+    <section id="addTodo">
+
+      <InputGroup className="mb-3">
+        
+        <Form.Control
+          placeholder="Add a new todo..."
+          aria-label="jobName"
+          aria-describedby="jobName"
+          type="text"  value={name}
+          onChange={handleInputChange}
+        />
+        <button className="" type="submit" onClick={handleAddTodo}>Add</button>
+      </InputGroup>
+    </section>
+    
   );
 };
-
-
