@@ -33,7 +33,7 @@ export const ShowTodoListComponent = () => {
         {toDoList.map(({name,completed},item:number) => (
           <Col 
             as="li"
-            className="d-flex justify-content-between my-2 bg-white  border rounded line_height"
+            className="d-flex justify-content-between align-items-center my-2 bg-white  border rounded line_height"
             key={item}
           > 
             <span
@@ -44,10 +44,9 @@ export const ShowTodoListComponent = () => {
               onKeyDown={(event)=>(event)}
             >
               <FontAwesomeIcon icon={faCheck} className="mr-2" />
-              {name}
+              {`${name} : ${completed}`}
             </span>
             <CloseButton 
-              className='d-flex align-items-center'
               onClick={() => handleDeleteTodo(item)}
               />
             
