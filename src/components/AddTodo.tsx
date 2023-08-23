@@ -15,15 +15,16 @@ export const AddTodoComponeent = () => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setName(value);
-    console.log(name);
   };
 
   const handleAddTodo = (event: React.FormEvent) => {
     event.preventDefault();
     if (name.trim()) {
-      dispatch(addTodo(name));
-      dispatch(sortTodosByCompleted());
-      setName("");
+      setTimeout(()=>{
+        dispatch(addTodo(name));
+        dispatch(sortTodosByCompleted());
+        setName("");
+      },1000);
     }
   };
 

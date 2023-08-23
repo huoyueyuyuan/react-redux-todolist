@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Container as="main" className="bg-secondary w-75">
-      <h2 className="pt-4">Todo Demo</h2>
+      <h2 className="pt-4 text-light ps-1">Demo</h2>
       <ShowTodoListComponent />
       <AddTodoComponeent />
       <div className="empty-space"></div>

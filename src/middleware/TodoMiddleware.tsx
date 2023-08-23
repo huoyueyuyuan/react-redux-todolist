@@ -1,12 +1,10 @@
-const completedAtMiddleware = (store) => (next) => (action) => {
+const todoMiddleware = (store) => (next) => (action) => {
   if (action.type === 'todos/toggleTodo') {
-    console.log(action);
     const index = action.payload;
     const state = store.getState();
     const todo = state.todos[index];
-    console.log(todo);
     if (!todo.completed) {
-      const timestamp = new Date().toISOString();
+      const timestamp = new Date();
       console.log(`Task "${todo.name}" completed at ${timestamp}`);
     }
   }
@@ -14,4 +12,4 @@ const completedAtMiddleware = (store) => (next) => (action) => {
   return next(action);
 };
 
-export default completedAtMiddleware;
+export default todoMiddleware;

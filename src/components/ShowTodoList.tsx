@@ -20,8 +20,11 @@ export const ShowTodoListComponent = () => {
   };
 
   const handleToggleTodo = (id:number) => {
-    dispatch(toggleTodo(id));
-    dispatch(sortTodosByCompleted());
+    setTimeout(()=>{
+      dispatch(toggleTodo(id));
+      dispatch(sortTodosByCompleted());
+    },1000);
+    
   };
 
   return (

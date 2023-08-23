@@ -1,6 +1,5 @@
-# Getting Started with Create React App
+这是一个我个人的项目练习题
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
