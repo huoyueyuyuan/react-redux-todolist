@@ -1,46 +1,50 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .empty-space {
-  height: 50px;
+  height: 6rem;
 }
 
 .line_height{
   line-height: 2.5; 
+}
+
+.snowflake-container {
+  display: flex;
+  align-items: center;
+  animation: snowfall 3s linear infinite;
+}
+
+.line {
+  background-color: orange;
+  width: 1.5%;
+  height: 4px;
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform-origin: 0% 0%;
+  transform: translateY(-2px);
+}
+
+.line:nth-of-type(2) {
+  transform: rotate(180deg) translateY(-2px) ;
+}
+
+.line:nth-of-type(3) {
+  transform: rotate(60deg) translateX(1px) translateY(-2px);
+}
+.line:nth-of-type(4) {
+  transform: rotate(240deg) translateX(1px) translateY(-2px) ;
+}
+.line:nth-of-type(5) {
+  transform: rotate(120deg) translateX(1px) translateY(-2px);
+}
+.line:nth-of-type(6) {
+  transform: rotate(300deg) translateX(1px) translateY(-2px) ;
+}
+
+
+@keyframes snowfall {
+  to {
+    transform: translateY(10vh);
+  }
+  
 }

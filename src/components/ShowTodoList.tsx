@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan, faCheck, faTimes, faTimesCircle, faWindowClose } from '@fortawesome/free-solid-svg-icons';
-import { deleteTodo, sortTodosByCompleted, toggleTodo } from '../redux/TodoSlice'; 
+import { faCheck, } from '@fortawesome/free-solid-svg-icons';
+import { deleteTodo, hiddenSnowflake, showSnowflake, sortTodosByCompleted, toggleTodo } from '../redux/TodoSlice'; 
 import { TodoJob } from '../api/TodoJob';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,18 +12,20 @@ import '../App.css'; // 导入 index.css 文件
 
 export const ShowTodoListComponent = () => {
   
-  const toDoList:TodoJob[] = useSelector((state:any) => state.todos);
+  const toDoList:TodoJob[] = useSelector((state:any) => state.todos.todoList);
   const dispatch = useDispatch();
 
   const handleDeleteTodo = (id:number) => {
-    dispatch(deleteTodo(id));
+    dispatch(showSnowflake())
+    setTimeout(()=>{
+      dispatch(deleteTodo(id));
+      dispatch(sortTodosByCompleted());
+    },1000);
   };
 
   const handleToggleTodo = (id:number) => {
-    setTimeout(()=>{
-      dispatch(toggleTodo(id));
-      dispatch(sortTodosByCompleted());
-    },1000);
+    dispatch(toggleTodo(id));
+    
     
   };
 
@@ -47,7 +49,7 @@ export const ShowTodoListComponent = () => {
               onKeyDown={(event)=>(event)}
             >
               <FontAwesomeIcon icon={faCheck} className="mr-2" />
-              {`${name} : ${completed}`}
+              {name}
             </span>
             <CloseButton 
               onClick={() => handleDeleteTodo(item)}
