@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CloseButton from 'react-bootstrap/CloseButton';
 
-import '../App.css'; // 导入 index.css 文件
+import '../App.css';
 
 export const ShowTodoListComponent = () => {
   
@@ -20,31 +20,30 @@ export const ShowTodoListComponent = () => {
     setTimeout(()=>{
       dispatch(deleteTodo(id));
       dispatch(sortTodosByCompleted());
+      dispatch(hiddenSnowflake());
     },1000);
   };
 
   const handleToggleTodo = (id:number) => {
     dispatch(toggleTodo(id));
-    
-    
+    dispatch(sortTodosByCompleted());
   };
 
   return (
     <section>
-      <div className='w-100'>
       <Row as="ul" 
         className="list-unstyled justify-content-center mx-0"
         xs={1}>
         {toDoList.map(({name,completed},item:number) => (
           <Col 
             as="li"
-            className="d-flex justify-content-between align-items-center my-2 bg-white  border rounded line_height"
+            className="d-flex justify-content-between align-items-center my-2 bg-white border rounded line_height"
             key={item}
           > 
             <span
               role='button'
-              className={`${completed? 'text-danger text-decoration-line-through' : 'text-info'} `}
-              tabIndex={0}
+              className={completed? 'text-danger text-decoration-line-through' : 'text-info'}
+              tabIndex={item}
               onClick={() => handleToggleTodo(item)}
               onKeyDown={(event)=>(event)}
             >
@@ -54,12 +53,9 @@ export const ShowTodoListComponent = () => {
             <CloseButton 
               onClick={() => handleDeleteTodo(item)}
               />
-            
           </Col>
         ))}
       </Row>
-      </div>
-      
     </section>
   );
 };

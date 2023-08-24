@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-import { addTodo, showSnowflake, sortTodosByCompleted } from '../redux/TodoSlice'; 
+import { addTodo, hiddenSnowflake, showSnowflake, sortTodosByCompleted } from '../redux/TodoSlice'; 
 
 import '../App.css';
 
@@ -19,11 +19,12 @@ export const AddTodoComponeent = () => {
 
   const handleAddTodo = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(showSnowflake())
     if (name.trim()) {
+      dispatch(showSnowflake())
       setTimeout(()=>{
         dispatch(addTodo(name));
         dispatch(sortTodosByCompleted());
+        dispatch(hiddenSnowflake());
         setName("");
       },1000);
     }
@@ -41,7 +42,7 @@ export const AddTodoComponeent = () => {
           type="text"  value={name}
           onChange={handleInputChange}
         />
-        <button className="shadow-none" type="submit" onClick={handleAddTodo}>Add</button>
+        <button type="submit" onClick={handleAddTodo}>Add</button>
       </InputGroup>
     </section>
     

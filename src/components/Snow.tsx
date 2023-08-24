@@ -1,29 +1,33 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 
-import '../App.css'; // 导入您的样式文件
+import '../App.css';
 
 
 export const SnowComponeent = () => {
   
     const show = useSelector((state:any) => state.todos.showSnow);
-
-  
-    console.log(show);
   
     return (
       <section id="snow" className="position-relative z-3">
         
-        {true && 
-          <div className="snowflake-container z-99">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
+        {show && 
+          <div className="snowFlake_container w-100 position-absolute">
+          
+          <div className="position-absolute top-50 start-50 snowFlake-block">
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
           </div>
+        </div>
+        
         } 
+    
+
+
         
       </section>
       
